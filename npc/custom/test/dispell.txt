@@ -1,0 +1,4 @@
+moc_para01,33,33,6	script	Dispell	743,{
+	sc_end SC_ALL;
+	end;
+}

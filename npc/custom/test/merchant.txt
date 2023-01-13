@@ -1,0 +1,4 @@
+moc_para01,24,22,2	script	Itens Especiais	899,{
+	getitem 19507,1;
+	end;
+}

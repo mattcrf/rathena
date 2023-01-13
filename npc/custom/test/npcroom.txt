@@ -1,0 +1,13 @@
+-	script	npc_room	-1,{
+	
+	OnInit:
+		bindatcmd "point",strnpcinfo(3) + "::OnAtcommand";
+		end;
+	
+	OnAtcommand:
+		warp "moc_para01",23,28;
+		end;
+}
+
+prontera,165,168,0	warp	npc_room_enter	1,1,moc_para01,30,13
+moc_para01,30,10,0	warp	npc_room_exit	1,1,prontera,163,168

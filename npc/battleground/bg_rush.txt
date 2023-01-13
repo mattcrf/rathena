@@ -162,6 +162,8 @@ OnMatchEnd:
 	if($@BG15_Team1) { bg_destroy $@BG15_Team1; $@BG15_Team1 = 0; }
 	if($@BG15_Team2) { bg_destroy $@BG15_Team2; $@BG15_Team2 = 0; }
 	bg_unbook .Castle$;
+	$@currentbg$ = "";
+	donpcevent "BG_config::OnRotation";
 	end;
 }
 

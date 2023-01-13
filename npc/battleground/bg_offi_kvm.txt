@@ -164,6 +164,7 @@ OnCroixActive:
 	end;
 
 OnStart:
+	announce "[Battleground]: Krieger Von Midgard has just began ! (@joinbg to join)",bc_all,0xccff00;
 	disablenpc "KVM Officer#KVM02A";
 	disablenpc "KVM Officer#KVM02B";
 	set $@KvM02BG_Victory, 0;
@@ -346,6 +347,8 @@ OnTimer60000:
 	disablenpc "KVM Officer#KVM02A";
 	disablenpc "KVM Officer#KVM02B";
 	set $@KvM02BG, 0;
+	$@currentbg$ = "";
+	donpcevent "BG_config::OnRotation";
 	end;
 
 OnGuillaumeJoin:

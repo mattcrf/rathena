@@ -230,6 +230,7 @@ OnMatchEnd:
 	if(checkwall("conq_RL01")) delwall "conq_RL01";
 	if(checkwall("conq_RL02")) delwall "conq_RL02";
 	if(checkwall("conq_RL03")) delwall "conq_RL03";
+	donpcevent "BG_config::OnRotation";
 	end;
 }
 -	script	Conquest1	FAKE_NPC,{

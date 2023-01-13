@@ -1,0 +1,41 @@
+moc_para01,52,36,3	script	Invocar Monstro#tdummy	969,{
+	
+	input .@summon_id;
+	if (!strmobinfo(3,.@summon_id)) {
+		if (!.last_id)
+			end;
+		.@summon_id = .last_id;
+	}
+	else
+		.last_id = .@summon_id;
+		
+	callsub KillSpawn;	
+	
+	monster	"moc_para01",43,31,strmobinfo(1,.@summon_id),.@summon_id,1;
+	$@GID = $@mobid[0];	
+	
+	getunitdata $@GID,.@mob_data;
+	
+	.@mob_mode = .@mob_data[9];
+	.@mob_mode -= 1;
+	.@mob_mode -= 128;
+	.@mob_mode += 64;	
+	setunitdata $@GID, UMOB_MODE, 0;
+	setunitdata $@GID, UMOB_MODE, .@mob_mode;
+	
+	setunitdata $@GID, UMOB_LOOKDIR, 6;
+	end;
+	
+	//getunitdata $@GID,.@mob_data;
+	//dispbottom("" + .@mob_data[9] + "");
+	
+OnInit:	
+	callsub KillSpawn;
+	end;	
+	
+KillSpawn:
+	.@isAlive = unitexists($@GID);
+	if (.@isAlive)
+		unitkill $@GID;
+	return;
+}

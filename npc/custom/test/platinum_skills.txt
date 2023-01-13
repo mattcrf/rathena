@@ -1,0 +1,18 @@
+moc_para01,19,35,4	script	Habilidades de Platina	898,{
+	
+	.npcname$ = "[^0000FF"+strnpcinfo(0)+"^000000]";
+	
+	mes .npcname$;
+	mes "Eu posso te dar as habilidades especiais disponíveis para sua classe.";
+	mes "Você gostaria de ter essas habilidades agora?";
+	next;
+	if (select("Sim, por favor:Não") == 2) {
+		mes .npcname$;
+		mes "Tenha um bom dia... >.>";
+		close;
+	}
+	callfunc "F_GetPlatinumSkills";
+	mes .npcname$;
+	mes "Aqui está!";
+	close;
+}

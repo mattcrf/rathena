@@ -1,0 +1,11 @@
+moc_para01,41,20,2	script	Bilionário	573,{
+	if (Zeny < 2000000000)
+	{
+		.@zeny = rand(1, 50000000);
+		Zeny += .@zeny;
+		dispbottom("O Bilionário te presentou com "+.@zeny+" zenys!");
+	}
+	else
+		dispbottom("Você já é podre de rico.");
+	end;
+}

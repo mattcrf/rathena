@@ -1,0 +1,18 @@
+-	script	Healer	-1,{
+	
+	specialeffect2 EF_INCAGILITY;
+	sc_start SC_INCREASEAGI,240000,10; 
+	
+	specialeffect2 EF_BLESSING;	
+	sc_start SC_BLESSING,240000,10;	
+	
+	specialeffect2 EF_HEAL;
+	percentheal 100,100; 
+	
+	emotion 3;
+	
+	end;	
+}
+
+moc_para01,14,28,4	duplicate(Healer)	Curandeira#eden	569
+moc_para01,35,36,6	duplicate(Healer)	Curandeira#eden2	569

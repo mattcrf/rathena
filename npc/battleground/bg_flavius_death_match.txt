@@ -53,8 +53,8 @@ OnReady:
 	announce "[Battleground]: Flavius Death Match has just began ! (@joinbg to join)",bc_all,0xccff00;
 	set $@BG14,1;
 	initnpctimer;
-	set $@score_deathmatch_blue, 50;
-	set $@score_deathmatch_red, 50;
+	set $@score_deathmatch_blue, 1;
+	set $@score_deathmatch_red, 1;
 	bg_updatescore "bat_b03",$@score_deathmatch_blue,$@score_deathmatch_red;
 	sleep 2100;
 	bg_warp $@BG14_Team1,"bat_b03",328,150;
@@ -149,6 +149,7 @@ OnMatchEnd:
 	if($@BG14_Team1) { bg_destroy $@BG14_Team1; $@BG14_Team1 = 0; }
 	if($@BG14_Team2) { bg_destroy $@BG14_Team2; $@BG14_Team2 = 0; }
 	bg_unbook "bat_b03";
+	donpcevent "BG_config::OnRotation";
 	end;
 }
 
