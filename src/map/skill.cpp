@@ -12881,6 +12881,8 @@ TIMER_FUNC(skill_castend_id){
 			ud->canact_tick = i64max(tick + skill_delayfix(src, ud->skill_id, ud->skill_lv), ud->canact_tick - SECURITY_CASTTIME);
 		if (sd) { //Cooldown application
 			int cooldown = pc_get_skillcooldown(sd,ud->skill_id, ud->skill_lv); // Increases/Decreases cooldown of a skill by item/card bonuses.
+			if (map_getmapflag(sd->bl.m, MF_MVP_ALIVE) && ud->skill_id == AL_TELEPORT) // Cooldown aumentado em mapas PVP
+				cooldown += 3000;
 			if(cooldown) skill_blockpc_start(sd, ud->skill_id, cooldown);
 		}
 		if( battle_config.display_status_timers && sd )

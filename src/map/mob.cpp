@@ -1049,6 +1049,9 @@ TIMER_FUNC(mob_delayspawn){
 		}
 		md->spawn_timer = INVALID_TIMER;
 		mob_spawn(md);
+		if (md->state.boss) {
+			map_setmapflag(bl->m, MF_MVP_ALIVE, true);
+		}
 	}
 	return 0;
 }
@@ -1130,6 +1133,9 @@ int mob_spawn (struct mob_data *md)
 		md->bl.m = md->spawn->m;
 		md->bl.x = md->spawn->x;
 		md->bl.y = md->spawn->y;
+
+		if (md->spawn->state.boss)
+			map_setmapflag(md->bl.m, MF_MVP_ALIVE, true);
 
 		if( (md->bl.x == 0 && md->bl.y == 0) || md->spawn->xs || md->spawn->ys )
 		{	//Monster can be spawned on an area.
@@ -3130,6 +3136,10 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type)
 	// MvP tomb [GreenBox]
 	if (battle_config.mvp_tomb_enabled && md->spawn->state.boss && map_getmapflag(md->bl.m, MF_NOTOMB) != 1)
 		mvptomb_create(md, mvp_sd ? mvp_sd->status.name : NULL, time(NULL));
+
+	if (md->spawn->state.boss) {
+		map_setmapflag(md->bl.m, MF_MVP_ALIVE, false);
+	}
 
 	if( !rebirth )
 		mob_setdelayspawn(md); //Set respawning.

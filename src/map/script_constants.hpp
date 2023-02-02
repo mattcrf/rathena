@@ -542,6 +542,7 @@
 	export_constant(MF_NORENEWALEXPPENALTY);
 	export_constant(MF_NOPETCAPTURE);
 	export_constant(MF_NOBUYINGSTORE);
+	export_constant(MF_MVP_ALIVE);
 
 	/* setcell types */
 	export_constant(CELL_WALKABLE);
